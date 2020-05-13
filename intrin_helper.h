@@ -4,8 +4,8 @@
  * @email benquickdenn@foxmail.com
 **********************************************/
 
-#ifndef INTRIN_HELPER
+#ifndef INTRIN_HELPER_H
 
-#define INTRIN_HELPER
+#define INTRIN_HELPER_H
 
 #endif
