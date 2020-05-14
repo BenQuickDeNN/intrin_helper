@@ -2,6 +2,7 @@
 
 #define PUBLIC_FUNCTIONS_H
 
+#include <omp.h>
 
 template<class T> 
 /**
