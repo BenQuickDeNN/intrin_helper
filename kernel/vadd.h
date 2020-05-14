@@ -10,8 +10,6 @@
 
 #include "shared_headers.h"
 
-#endif
-
 /**
  * @brief vector add for 128 bits float
  * @param c array to store
@@ -161,3 +159,5 @@ inline void vadd8d(double* c, const double* a, const double* b, const unsigned l
     for (unsigned int i = len1; i < len2; i++)
         c[i] = a[i] + b[i];
 }
+
+#endif
