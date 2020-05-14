@@ -7,7 +7,7 @@ include_directories(../)
 
 # 编译选项
 set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_CXX_FLAGS "-O3 -fopenmp -ftree-vectorize -wall")
+set(CMAKE_CXX_FLAGS "-O3 -fopenmp -ftree-vectorize -Wall")
 
 # 添加源文件目录到SRC变量
 # set(SRC1 src/arrayadd.cpp)
