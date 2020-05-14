@@ -1,3 +1,4 @@
 *.exe
 *.out
 example/bin
+example/build

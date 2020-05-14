@@ -1,3 +1,8 @@
+/*************************************************
+ * @author Bin Qu
+ * @email benquickdenn@foxmail.com
+*************************************************/
+
 #ifndef CONFIGURATION_H
 
 #define CONFIGURATION_H

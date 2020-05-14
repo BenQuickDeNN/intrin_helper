@@ -1,25 +1,30 @@
+/*************************************************
+ * @author Bin Qu
+ * @email benquickdenn@foxmail.com
+*************************************************/
+
 #ifndef PUBLIC_FUNCTIONS_H
 
 #define PUBLIC_FUNCTIONS_H
 
 #include <omp.h>
+#include <cstdio>
 
-template<class T> 
 /**
  * @brief fill array arr with value val
  * @param arr array
  * @param val value
  * @param len length of arr
  */
-void fill(T* arr, const T& val, const unsigned long& len);
+template<class T> void fill(T* arr, const T& val, const unsigned long& len);
 
-template<class T> 
+
 /**
  * @brief print the elements of array arr
  * @param arr array
  * @param len length of arr
  */
-void disparr(const T* arr, const unsigned long& len);
+template<class T> void disparr(const T* arr, const unsigned long& len);
 
 template<class T> 
 void fill(T* arr, const T& val, const unsigned long& len)

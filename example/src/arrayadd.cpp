@@ -3,9 +3,6 @@
  * @email benquickdenn@foxmail.com
 *************************************************/
 
-#include <omp.h>
-#include <cstdio>
-
 #include "intrin_helper.h"
 #include "configuration.h"
 #include "public_functions.h"
@@ -13,7 +10,9 @@
 #ifdef P_DOUBLE
 typedef double type;
 #else
+#ifdef P_SINGLE
 typedef float type;
+#endif
 #endif
 
 const unsigned long LEN = 20;
