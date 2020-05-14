@@ -6,7 +6,7 @@ project(intrin_helper_example CXX)
 include_directories(../)
 
 # 编译选项
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-O3 -fopenmp -ftree-vectorize -Wall")
 
 # 添加源文件目录到SRC变量
@@ -14,3 +14,4 @@ set(CMAKE_CXX_FLAGS "-O3 -fopenmp -ftree-vectorize -Wall")
 
 # 生成可执行文件
 add_executable(arrayadd src/arrayadd.cpp)
+add_executable(arrayadd_performance src/arrayadd_performance.cpp)
