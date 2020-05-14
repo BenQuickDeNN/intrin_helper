@@ -8,4 +8,6 @@
 
 #define INTRIN_HELPER_H
 
+#include "kernel/vadd.h"
+
 #endif
