@@ -8,7 +8,7 @@
 
 #define VADD_H
 
-#include "shared_headers.h"
+#include "configuration.h"
 
 /**
  * @brief vector add for 128 bits float
