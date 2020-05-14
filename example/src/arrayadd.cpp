@@ -7,66 +7,53 @@
 #include <cstdio>
 
 #include "intrin_helper.h"
-#include "vector_instruction_level.h"
+#include "configuration.h"
+#include "public_functions.h"
 
+#ifdef P_DOUBLE
+typedef double type;
+#else
 typedef float type;
+#endif
 
 const unsigned long LEN = 20;
 
 type a[LEN], b[LEN], c[LEN];
 
-/**
- * @brief fill array arr with value val
- * @param arr array
- * @param val value
- * @param len length of arr
- */
-void fill(type* arr, const type& val, const unsigned long& len);
-
-/**
- * @brief print the elements of array arr
- * @param arr array
- * @param len length of arr
- */
-void disparr(const type* arr, const unsigned long& len);
-
 int main()
 {
     /* initialize data */
-    fill(a, 2.0, LEN);
-    fill(b, 3.0, LEN);
+    fill<type>(a, 2.0, LEN);
+    fill<type>(b, 3.0, LEN);
 
     /* compute */
 #ifdef VECTOR_LARGE
+#ifdef P_DOUBLE
+    vadd8d(c, a, b, LEN);
+#else
     vadd16f(c, a, b, LEN);
+#endif
 #else
 #ifdef VECTOR_NORMAL
+#ifdef P_DOUBLE
+    vadd4d(c, a, b, LEN);
+#else
     vadd8f(c, a, b, LEN);
+#endif
 #else
 #ifdef VECTOR_SMALL
+#ifdef P_DOUBLE
+    vadd2d(c, a, b, LEN);
+#else
     vadd4f(c, a, b, LEN);
+#endif
 #endif
 #endif
 #endif
 
     /* display */
-    disparr(c, LEN);
+    disparr<type>(c, LEN);
 
     return 0;
 }
 
-void fill(type* arr, const type& val, const unsigned long& len)
-{
-    #pragma omp parallel for
-    for (unsigned long i = 0; i < len; i++)
-        arr[i] = val;
-}
-
-void disparr(const type* arr, const unsigned long& len)
-{
-    using namespace std;
-    fprintf(stdout, "[");
-    for (unsigned long i = 0; i < len - 1; i++)
-        fprintf(stdout, "%.1f ", arr[i]);
-    fprintf(stdout, "%.1f]\n", arr[len - 1]);
-}
