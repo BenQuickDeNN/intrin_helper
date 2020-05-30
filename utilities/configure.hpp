@@ -10,7 +10,16 @@
 
 #include "instruction_check.hpp"
 
+#if defined(_WIN32)
+
 #include <intrin.h>
+
+#elif defined(__linux__)
+
+#include <x86intrin.h>
+
+#endif
+
 #include <omp.h>
 
 /* Number of OpenMP Threads */
