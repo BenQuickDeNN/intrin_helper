@@ -10,6 +10,17 @@
 
 #include "../utilities/configure.hpp"
 
+#include <cstdlib>
+#include <iostream>
+
+/**
+ * @brief vector add
+ * @param c array to store
+ * @param a,b arrays to read
+ * @param len length of array
+ */
+template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned long& len);
+
 /**
  * @brief vector add for 128 bits float
  * @param c array to store
@@ -57,6 +68,53 @@ inline void vadd4d(double* c, const double* a, const double* b, const unsigned l
  * @param len length of array
  */
 inline void vadd8d(double* c, const double* a, const double* b, const unsigned long& len);
+
+template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned long& len)
+{
+    using namespace std;
+
+    /* check precision */
+    if (sizeof(T) == sizeof(float))
+    {
+        // single precision
+        switch(_vec_width)
+        {
+            case VEC_WIDTH::VL512:
+                vadd16f(c, a, b, len);
+                break;
+            case VEC_WIDTH::VL256:
+                vadd8f(c, a, b, len);
+                break;
+            case VEC_WIDTH::VL128:
+                vadd4f(c, a, b, len);
+                break;
+            default:
+                cerr << "vadd error: vector extension is not supported!" << endl;
+                break;
+        }
+    }
+    else if (sizeof(T) == sizeof(double))
+    {
+        // double precision
+        switch(vl)
+        {
+            case VEC_WIDTH::VL512:
+                vadd8d(c, a, b, len);
+                break;
+            case VEC_WIDTH::VL256:
+                vadd4d(c, a, b, len);
+                break;
+            case VEC_WIDTH::VL128:
+                vadd2d(c, a, b, len);
+                break;
+            default:
+                cerr << "vadd error: vector extension is not supported!" << endl;
+                break;
+        }
+    }
+    else
+        cerr << "vadd error: unknown precision!" << endl;
+}
 
 inline void vadd4f(float* c, const float* a, const float* b, const unsigned long& len)
 {

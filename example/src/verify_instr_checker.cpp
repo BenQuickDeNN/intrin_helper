@@ -6,17 +6,16 @@ int main()
 {
     using namespace std;
 
-    cout << "the maximum vector length is ";
-    VEC_LENGTH vl = checkVectorWidth();
-    switch (vl)
+    cout << "the maximum vector width is ";
+    switch (_vec_width)
     {
-    case VEC_LENGTH::VL512:
+    case VEC_WIDTH::VL512:
         cout << "512";
         break;
-    case VEC_LENGTH::VL256:
+    case VEC_WIDTH::VL256:
         cout << "256";
         break;
-    case VEC_LENGTH::VL128:
+    case VEC_WIDTH::VL128:
         cout << "128";
         break;
     default:

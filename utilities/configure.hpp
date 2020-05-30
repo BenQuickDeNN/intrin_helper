@@ -25,7 +25,7 @@
 /* Number of OpenMP Threads */
 // const int OMP_NUM_THREADs = 4;
 
-enum VEC_LENGTH
+enum VEC_WIDTH
 {
     VL0,
     VL64,
@@ -37,23 +37,24 @@ enum VEC_LENGTH
 /**
  * @brief check the max length of vector extension
  */
-VEC_LENGTH checkVectorWidth();
+VEC_WIDTH checkVectorWidth();
 
-VEC_LENGTH checkVectorWidth()
+VEC_WIDTH checkVectorWidth()
 {
+    /* initialize instruction_checker */
     InstructionChecker ic;
 
     /* check AVX512F */
     if (ic.HW_AVX512F)
-        return VEC_LENGTH::VL512;
+        return VEC_WIDTH::VL512;
     
     /* check AVX */
     if (ic.HW_AVX)
-        return VEC_LENGTH::VL256;
+        return VEC_WIDTH::VL256;
     
     /* check SSE */
     if (ic.HW_SSE)
-        return VEC_LENGTH::VL512;
+        return VEC_WIDTH::VL512;
     
     /* check MMX */
     //if (ic.HW_MMX)
@@ -61,7 +62,10 @@ VEC_LENGTH checkVectorWidth()
     /* MMX doesnot support floatpoint computation */
 
     /* default */
-    return VEC_LENGTH::VL0;
+    return VEC_WIDTH::VL0;
 }
+
+// global vector width
+const VEC_WIDTH _vec_width = checkVectorWidth();
 
 #endif
