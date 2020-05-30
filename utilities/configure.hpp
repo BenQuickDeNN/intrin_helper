@@ -40,20 +40,22 @@ VEC_LENGTH checkVectorWidth();
 
 VEC_LENGTH checkVectorWidth()
 {
+    InstructionChecker ic;
+
     /* 检测AVX512F */
-    if (InstructionChecker::AVX512F)
+    if (ic.HW_AVX512F)
         return VEC_LENGTH::VL512;
     
     /* 检测AVX */
-    if (InstructionChecker::AVX)
+    if (ic.HW_AVX)
         return VEC_LENGTH::VL256;
     
     /* 检测SSE */
-    if (InstructionChecker::SSE)
+    if (ic.HW_SSE)
         return VEC_LENGTH::VL512;
     
     /* 检测MMX */
-    if (InstructionChecker::MMX)
+    if (ic.HW_MMX)
         return VEC_LENGTH::VL64;
     
 }
