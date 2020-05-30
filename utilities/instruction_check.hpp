@@ -10,10 +10,21 @@
 
 #include <iostream>
 #include <vector>
+#include <cstring>
 #include <bitset>
 #include <array>
 #include <string>
+
+#if defined(_WIN32)
+
 #include <intrin.h>
+
+#elif defined(__linux__)
+
+#include <x86intrin.h>
+#include <cpuid.h>
+
+#endif
 
 class InstructionChecker
 {
@@ -139,7 +150,7 @@ private:
             // Calling __cpuid with 0x80000000 as the function_id argument
             // gets the number of the highest valid extended ID.
             __cpuid(cpui.data(), 0x80000000);
-            nExIds_ = cpui[0];
+            unsigned int nExIds_ = cpui[0];
             char brand[0x40];
             memset(brand, 0, sizeof(brand));
             for (int i = 0x80000000; i <= nExIds_; ++i)
