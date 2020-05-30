@@ -21,7 +21,7 @@ int main()
     vadd<type>(c, a, b, LEN);
 
     printf("vadd result is:\n");
-    for (const ele : c)
+    for (const type& ele : c)
         printf("%.1f\t");
     printf("\n");
 

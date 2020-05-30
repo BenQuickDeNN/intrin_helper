@@ -80,13 +80,13 @@ template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned 
         switch(_vec_width)
         {
             case VEC_WIDTH::VL512:
-                vadd16f(c, a, b, len);
+                vadd16f((float*)c, (float*)a, (float*)b, len);
                 break;
             case VEC_WIDTH::VL256:
-                vadd8f(c, a, b, len);
+                vadd8f((float*)c, (float*)a, (float*)b, len);
                 break;
             case VEC_WIDTH::VL128:
-                vadd4f(c, a, b, len);
+                vadd4f((float*)c, (float*)a, (float*)b, len);
                 break;
             default:
                 cerr << "vadd error: vector extension is not supported!" << endl;
@@ -99,13 +99,13 @@ template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned 
         switch(_vec_width)
         {
             case VEC_WIDTH::VL512:
-                vadd8d(c, a, b, len);
+                vadd8d((double*)c, (double*)a, (double*)b, len);
                 break;
             case VEC_WIDTH::VL256:
-                vadd4d(c, a, b, len);
+                vadd4d((double*)c, (double*)a, (double*)b, len);
                 break;
             case VEC_WIDTH::VL128:
-                vadd2d(c, a, b, len);
+                vadd2d((double*)c, (double*)a, (double*)b, len);
                 break;
             default:
                 cerr << "vadd error: vector extension is not supported!" << endl;
