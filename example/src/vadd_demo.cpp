@@ -2,7 +2,15 @@
 
 #include <cstdio>
 
+#if defined(__SINGLE__)
+
 typedef float type;
+
+#elif defined(__DOUBLE__)
+
+typedef double type;
+
+#endif
 
 const unsigned long LEN = 16;
 

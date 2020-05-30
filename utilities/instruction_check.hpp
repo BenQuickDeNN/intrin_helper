@@ -3,6 +3,7 @@
 // processor: x86, x64
 // Uses the __cpuid intrinsic to get information about 
 // CPU extended instruction set support.
+// @suppress
 
 #ifndef INSTRUCTION_CHECK_HPP
 
@@ -11,12 +12,14 @@
 #ifdef _WIN32
 
 //  Windows
+#include <intrin.h>
 #define cpuid(info, x)    __cpuidex(info, x, 0)
 
 #else
 
 //  GCC Intrinsics
 #include <cpuid.h>
+#include <x86intrin.h>
 void cpuid(int info[4], int InfoType){
     __cpuid_count(InfoType, 0, info[0], info[1], info[2], info[3]);
 }
@@ -76,7 +79,7 @@ public:
 
         //  Detect Features
         if (nIds >= 0x00000001){
-            cpuid(info,0x00000001);
+            cpuid(info, 0x00000001);
             HW_MMX    = (info[3] & ((int)1 << 23)) != 0;
             HW_SSE    = (info[3] & ((int)1 << 25)) != 0;
             HW_SSE2   = (info[3] & ((int)1 << 26)) != 0;
@@ -93,7 +96,7 @@ public:
             HW_RDRAND = (info[2] & ((int)1 << 30)) != 0;
         }
         if (nIds >= 0x00000007){
-            cpuid(info,0x00000007);
+            cpuid(info, 0x00000007);
             HW_AVX2   = (info[1] & ((int)1 <<  5)) != 0;
 
             HW_BMI1        = (info[1] & ((int)1 <<  3)) != 0;
@@ -113,7 +116,7 @@ public:
             HW_AVX512VBMI  = (info[2] & ((int)1 <<  1)) != 0;
         }
         if (nExIds >= 0x80000001){
-            cpuid(info,0x80000001);
+            cpuid(info, 0x80000001);
             HW_x64   = (info[3] & ((int)1 << 29)) != 0;
             HW_ABM   = (info[2] & ((int)1 <<  5)) != 0;
             HW_SSE4a = (info[2] & ((int)1 <<  6)) != 0;

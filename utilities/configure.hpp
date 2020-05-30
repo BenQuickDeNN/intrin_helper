@@ -25,6 +25,16 @@
 /* Number of OpenMP Threads */
 // const int OMP_NUM_THREADs = 4;
 
+// #define __SSE__
+// #define __AVX__
+// #define __AVX512F__
+
+#define __SINGLE__
+// #define __DOUBLE__
+
+/**
+ * @suppress
+ */
 enum VEC_WIDTH
 {
     VL0,
@@ -36,6 +46,7 @@ enum VEC_WIDTH
 
 /**
  * @brief check the max length of vector extension
+ * @suppress
  */
 VEC_WIDTH checkVectorWidth();
 
@@ -54,7 +65,7 @@ VEC_WIDTH checkVectorWidth()
     
     /* check SSE */
     if (ic.HW_SSE)
-        return VEC_WIDTH::VL512;
+        return VEC_WIDTH::VL128;
     
     /* check MMX */
     //if (ic.HW_MMX)
@@ -66,6 +77,9 @@ VEC_WIDTH checkVectorWidth()
 }
 
 // global vector width
+/**
+ * @suppress
+ */
 const VEC_WIDTH _vec_width = checkVectorWidth();
 
 #endif
