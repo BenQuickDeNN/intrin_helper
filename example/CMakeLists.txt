@@ -13,4 +13,4 @@ set(CMAKE_CXX_FLAGS "-O3 -fopenmp -ftree-vectorize -Wall")
 # set(SRC1 src/arrayadd.cpp)
 
 # 生成可执行文件
-add_executable(../bin/verify_instr_checker src/verify_instr_checker.cpp)
+add_executable(verify_instr_checker src/verify_instr_checker.cpp)
