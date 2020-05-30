@@ -96,7 +96,7 @@ template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned 
     else if (sizeof(T) == sizeof(double))
     {
         // double precision
-        switch(vl)
+        switch(_vec_width)
         {
             case VEC_WIDTH::VL512:
                 vadd8d(c, a, b, len);
