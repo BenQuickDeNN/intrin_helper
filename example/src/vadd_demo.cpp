@@ -12,7 +12,7 @@ int main()
 {
     using namespace std;
 
-    for (int i = 0; i < LEN; i++)
+    for (unsigned long i = 0; i < LEN; i++)
     {
         a[i] = 2.0;
         b[i] = 3.0;
@@ -22,7 +22,7 @@ int main()
 
     printf("vadd result is:\n");
     for (const type& ele : c)
-        printf("%.1f\t");
+        printf("%.1f\t", ele);
     printf("\n");
 
     return 0;
