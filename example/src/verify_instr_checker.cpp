@@ -1,4 +1,4 @@
-#include "../../intrin_helper.hpp"
+#include "intrin_helper.hpp"
 
 #include <iostream>
 

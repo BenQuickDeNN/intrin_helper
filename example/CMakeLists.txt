@@ -1,5 +1,5 @@
 # 基本配置
-cmake_minimum_required(VERSION 2.0)
+cmake_minimum_required(VERSION 3.0)
 project(intrin_helper_example CXX)
 
 # 头文件位置

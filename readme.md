@@ -1,3 +1,5 @@
-Make it easier to use intrinsic instructions.
+Intrin Helper
 
-用于简化intrinsic指令常用操作
+An encapsulation of Intel intrinsics instructions.
+
+Make it easier to use intrinsics instructions.
