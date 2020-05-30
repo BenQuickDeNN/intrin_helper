@@ -8,6 +8,8 @@
 
 #define CONFIGURE_HPP
 
+#include "instruction_check.hpp"
+
 #include <intrin.h>
 #include <omp.h>
 
@@ -29,11 +31,21 @@ VEC_LENGTH checkVectorWidth();
 
 VEC_LENGTH checkVectorWidth()
 {
-    
     /* 检测AVX512F */
+    if (InstructionChecker::AVX512F)
+        return VEC_LENGTH::VL512;
+    
     /* 检测AVX */
+    if (InstructionChecker::AVX)
+        return VEC_LENGTH::VL256;
+    
     /* 检测SSE */
+    if (InstructionChecker::SSE)
+        return VEC_LENGTH::VL512;
+    
     /* 检测MMX */
+    if (InstructionChecker::MMX)
+        return VEC_LENGTH::VL64;
 }
 
 #endif

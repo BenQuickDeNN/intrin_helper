@@ -8,7 +8,7 @@
 
 #define VADD_HPP
 
-#include "configure.hpp"
+#include "../utilities/configure.hpp"
 
 /**
  * @brief vector add for 128 bits float
