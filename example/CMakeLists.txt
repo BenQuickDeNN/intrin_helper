@@ -14,3 +14,4 @@ set(CMAKE_CXX_FLAGS "-O3 -fopenmp -ftree-vectorize -Wall")
 
 # 生成可执行文件
 add_executable(verify_instr_checker src/verify_instr_checker.cpp)
+add_executable(vadd_demo src/vadd_demo.cpp)
