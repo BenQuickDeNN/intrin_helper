@@ -27,6 +27,7 @@
 
 enum VEC_LENGTH
 {
+    VL0,
     VL64,
     VL128,
     VL256,
@@ -42,22 +43,25 @@ VEC_LENGTH checkVectorWidth()
 {
     InstructionChecker ic;
 
-    /* 检测AVX512F */
+    /* check AVX512F */
     if (ic.HW_AVX512F)
         return VEC_LENGTH::VL512;
     
-    /* 检测AVX */
+    /* check AVX */
     if (ic.HW_AVX)
         return VEC_LENGTH::VL256;
     
-    /* 检测SSE */
+    /* check SSE */
     if (ic.HW_SSE)
         return VEC_LENGTH::VL512;
     
-    /* 检测MMX */
-    if (ic.HW_MMX)
-        return VEC_LENGTH::VL64;
-    
+    /* check MMX */
+    //if (ic.HW_MMX)
+    //    return VEC_LENGTH::VL64;
+    /* MMX doesnot support floatpoint computation */
+
+    /* default */
+    return VEC_LENGTH::VL0;
 }
 
 #endif

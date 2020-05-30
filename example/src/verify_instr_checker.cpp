@@ -19,11 +19,8 @@ int main()
     case VEC_LENGTH::VL128:
         cout << "128";
         break;
-    case VEC_LENGTH::VL64:
-        cout << "64";
-        break;
     default:
-        cout << "XX";
+        cout << "0";
         break;
     }
     cout << " bits."<<endl;
