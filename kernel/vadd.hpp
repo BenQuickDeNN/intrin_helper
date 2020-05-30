@@ -85,8 +85,10 @@ template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned 
     using namespace std;
     
 #if defined(__AVX512F__) && defined(__SINGLE__)
+    cout << "enable AVX512F..." << endl;
     vadd16f(c, a, b, len);
 #elif defined(__AVX512F__) && defined(__DOUBLE__)
+    cout << "enable AVX512F..." << endl;
     vadd8d(c, a, b, len);
 #elif defined(__AVX__) && defined(__SINGLE__)
     cout << "enable AVX..." << endl;
