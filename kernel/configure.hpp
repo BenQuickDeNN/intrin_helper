@@ -4,9 +4,9 @@
  * @email benquickdenn@foxmail.com
 *************************************************/
 
-#ifndef SHARED_HEADER_H
+#ifndef CONFIGURE_HPP
 
-#define SHARED_HEADER_H
+#define CONFIGURE_HPP
 
 #include <intrin.h>
 #include <omp.h>

@@ -1,5 +1,4 @@
 *.exe
 *.out
 .vs
-example/bin
-example/build
+example

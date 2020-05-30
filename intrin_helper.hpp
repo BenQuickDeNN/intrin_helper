@@ -4,9 +4,9 @@
  * @email benquickdenn@foxmail.com
 **********************************************/
 
-#ifndef INTRIN_HELPER_H
+#ifndef INTRIN_HELPER_HPP
 
-#define INTRIN_HELPER_H
+#define INTRIN_HELPER_HPP
 
 #include "kernel/vadd.hpp"
 

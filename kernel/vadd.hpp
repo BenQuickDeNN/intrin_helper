@@ -4,9 +4,9 @@
  * @email benquickdenn@foxmail.com
 **********************************************/
 
-#ifndef VADD_H
+#ifndef VADD_HPP
 
-#define VADD_H
+#define VADD_HPP
 
 #include "configure.hpp"
 
