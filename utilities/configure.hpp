@@ -46,6 +46,7 @@ VEC_LENGTH checkVectorWidth()
     /* 检测MMX */
     if (InstructionChecker::MMX)
         return VEC_LENGTH::VL64;
+    
 }
 
 #endif
