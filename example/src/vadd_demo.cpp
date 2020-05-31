@@ -2,16 +2,6 @@
 
 #include <cstdio>
 
-#if defined(__SINGLE__)
-
-typedef float type;
-
-#elif defined(__DOUBLE__)
-
-typedef double type;
-
-#endif
-
 const unsigned long LEN = 16;
 
 type c[LEN], a[LEN], b[LEN];
@@ -26,7 +16,7 @@ int main()
         b[i] = 3.0;
     }
 
-    vadd<type>(c, a, b, LEN);
+    vadd(c, a, b, LEN);
 
     printf("vadd result is:\n");
     for (const type& ele : c)

@@ -8,6 +8,7 @@
 
 #define INTRIN_HELPER_HPP
 
+#include "utilities/configure.hpp"
 #include "kernel/vadd.hpp"
 
 #endif

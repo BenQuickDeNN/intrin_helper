@@ -19,7 +19,7 @@
  * @param a,b arrays to read
  * @param len length of array
  */
-template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned long& len);
+inline void vadd(type* c, const type* a, const type* b, const unsigned long& len);
 
 #ifdef __SSE__
 
@@ -80,7 +80,7 @@ inline void vadd8d(double* c, const double* a, const double* b, const unsigned l
 
 #endif
 
-template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned long& len)
+inline void vadd(type* c, const type* a, const type* b, const unsigned long& len)
 {
     using namespace std;
     
@@ -105,50 +105,6 @@ template<class T> inline void vadd(T* c, const T* a, const T* b, const unsigned 
 #else
     cerr << "vadd error: unknown precision or vector instruction!" << endl;
 #endif
-
-    /* check precision */
-    /*
-    if (sizeof(T) == sizeof(float))
-    {
-        // single precision
-        switch(_vec_width)
-        {
-            case VEC_WIDTH::VL512:
-                vadd16f((float*)c, (float*)a, (float*)b, len);
-                break;
-            case VEC_WIDTH::VL256:
-                vadd8f((float*)c, (float*)a, (float*)b, len);
-                break;
-            case VEC_WIDTH::VL128:
-                vadd4f((float*)c, (float*)a, (float*)b, len);
-                break;
-            default:
-                cerr << "vadd error: vector extension is not supported!" << endl;
-                break;
-        }
-    }
-    else if (sizeof(T) == sizeof(double))
-    {
-        // double precision
-        switch(_vec_width)
-        {
-            case VEC_WIDTH::VL512:
-                vadd8d((double*)c, (double*)a, (double*)b, len);
-                break;
-            case VEC_WIDTH::VL256:
-                vadd4d((double*)c, (double*)a, (double*)b, len);
-                break;
-            case VEC_WIDTH::VL128:
-                vadd2d((double*)c, (double*)a, (double*)b, len);
-                break;
-            default:
-                cerr << "vadd error: vector extension is not supported!" << endl;
-                break;
-        }
-    }
-    else
-        cerr << "vadd error: unknown precision!" << endl;
-    */
 }
 
 #ifdef __SSE__
